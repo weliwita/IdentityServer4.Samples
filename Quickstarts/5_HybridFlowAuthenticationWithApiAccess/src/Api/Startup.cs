@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using System.Security.Claims;
 
 namespace Api
 {
@@ -39,8 +40,8 @@ namespace Api
             app.UseIdentityServerAuthentication(new IdentityServerAuthenticationOptions
             {
                 Authority = "http://localhost:5000",
-                ScopeName = "api1",
-
+                ScopeName = "API",
+                RoleClaimType = ClaimTypes.Role,
                 RequireHttpsMetadata = false
             });
 

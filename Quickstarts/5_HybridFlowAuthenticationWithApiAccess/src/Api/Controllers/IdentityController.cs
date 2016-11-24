@@ -8,7 +8,8 @@ using Microsoft.AspNetCore.Authorization;
 namespace Api.Controllers
 {
     [Route("[controller]")]
-    [Authorize]
+    [Authorize(Roles = "admin")]
+    //[Authorize]
     public class IdentityController : ControllerBase
     {
         [HttpGet]

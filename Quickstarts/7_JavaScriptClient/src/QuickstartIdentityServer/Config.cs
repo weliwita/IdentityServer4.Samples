@@ -23,8 +23,16 @@ namespace QuickstartIdentityServer
                 {
                     Name = "api1",
                     DisplayName = "API1 access",
-                    Description = "My API"
+                    Description = "My API",
+                    Type = ScopeType.Resource,
+                    IncludeAllClaimsForUser = true,
+                    Claims = new List<ScopeClaim>
+                    {
+                        new ScopeClaim(ClaimTypes.Name),
+                        new ScopeClaim(ClaimTypes.Role)
+                    }
                 }
+              
             };
         }
 
@@ -99,7 +107,9 @@ namespace QuickstartIdentityServer
                     {
                         StandardScopes.OpenId.Name,
                         StandardScopes.Profile.Name,
-                        "api1"
+                        "api1",
+                        "role",
+                        StandardScopes.AllClaims.Name,
                     }
                 }
             };
@@ -118,7 +128,8 @@ namespace QuickstartIdentityServer
                     Claims = new List<Claim>
                     {
                         new Claim("name", "Alice"),
-                        new Claim("website", "https://alice.com")
+                        new Claim("website", "https://alice.com"),
+                        new Claim("role","FreeUser")
                     }
                 },
                 new InMemoryUser
